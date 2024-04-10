@@ -4,8 +4,6 @@ import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 
-<script src="Login.js"></script>
-
 function Logout() {
   const { data: session } = useSession();
   const auth = getAuth();
