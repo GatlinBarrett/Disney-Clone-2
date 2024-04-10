@@ -63,7 +63,9 @@ function Logout() {
           </div>
         )}
         <img
-          src={"https://lh3.googleusercontent.com/a/ACg8ocKvXNeRF59at4Lygiu_w487lfZZZ8Iu1uDJnYL2dPeHU44wLg=s96-c"}
+          src={
+            "https://lh3.googleusercontent.com/a/ACg8ocKvXNeRF59at4Lygiu_w487lfZZZ8Iu1uDJnYL2dPeHU44wLg=s96-c"
+          }
           alt=""
           className="ml-auto h-12 w-12 rounded-full object-cover cursor-pointer"
           onClick={handleLogout}
