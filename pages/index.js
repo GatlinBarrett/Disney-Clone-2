@@ -1,7 +1,7 @@
 // npm install firebase --force
-// npm add @heroicons/react@v1
+// npm install @heroicons/react@v1
 // npm install @auth/firebase-adapter firebase-admin --force
-// npm add next-auth
+// npm install next-auth
 // npm install react-responsive-carousel
 // npm install tailwind-scrollbar-hide
 // npm install react-player
@@ -15,6 +15,7 @@ import Slider from "../components/Slider";
 import Brands from "../components/Brands";
 import MoviesCollection from "../components/MoviesCollection";
 import ShowsCollection from "../components/ShowsCollection";
+import Login from "../app/Login.js";
 
 export default function Home({
   popularMovies,
@@ -22,7 +23,6 @@ export default function Home({
   top_ratedMovies,
   top_ratedShows,
 }) {
-  console.log(popularMovies);
   const { data: session } = useSession();
 
   return (
@@ -32,7 +32,7 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header></Header>
+      <Login></Login>
       {!session ? (
         <Hero></Hero>
       ) : (
