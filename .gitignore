@@ -19,6 +19,7 @@
 # misc
 .DS_Store
 *.pem
+disney-clone-83080-firebase-adminsdk-qd30g-32134ceef1.json
 
 # debug
 npm-debug.log*
