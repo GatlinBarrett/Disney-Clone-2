@@ -16,6 +16,7 @@ import Brands from "../components/Brands";
 import MoviesCollection from "../components/MoviesCollection";
 import ShowsCollection from "../components/ShowsCollection";
 import Login from "../app/Login.js";
+import Logged from "@/app/Logged";
 import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import app from "../firebase.js";
@@ -27,15 +28,15 @@ export default function Home({
   top_ratedMovies,
   top_ratedShows,
 }) {
+  const [user, setUser] = useState("");
+  const { data: session } = useSession();
   const auth = getAuth(app);
-  const [user, setUser] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
-        router.push("/");
       } else {
         setUser(null);
       }
@@ -43,8 +44,6 @@ export default function Home({
 
     return () => unsubscribe();
   }, []);
-
-  console.log(user);
 
   return (
     <div className="">
