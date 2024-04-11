@@ -51,12 +51,7 @@ function Header() {
         </div>
       )}
       {!session ? (
-        <button
-          onClick={signIn}
-          className="ml-auto uppercase border px-4 py-1.5 rounded font-medium tracking-wide hover:bg-white hover:text-black transition duration-200"
-        >
-          Login
-        </button>
+        <></>
       ) : (
         <img
           src={session.user.image}
