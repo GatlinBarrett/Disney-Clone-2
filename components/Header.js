@@ -13,8 +13,6 @@ function Header() {
   const { data: session } = useSession();
   const router = useRouter();
 
-  console.log(session)
-
   return (
     <div className="sticky bg-[#040714] top-0 z-[1000] flex items-center px-10 h-[72px] md:px-12">
       <Image

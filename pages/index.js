@@ -5,7 +5,7 @@
 // npm install react-responsive-carousel
 // npm install tailwind-scrollbar-hide
 // npm install react-player
-// 
+//
 
 import Head from "next/head";
 import { getSession, useSession } from "next-auth/react";
@@ -16,6 +16,10 @@ import Brands from "../components/Brands";
 import MoviesCollection from "../components/MoviesCollection";
 import ShowsCollection from "../components/ShowsCollection";
 import Login from "../app/Login.js";
+import { useEffect, useState } from "react";
+import { getAuth } from "firebase/auth";
+import app from "../firebase.js";
+import { useRouter } from "next/router";
 
 export default function Home({
   popularMovies,
@@ -23,7 +27,24 @@ export default function Home({
   top_ratedMovies,
   top_ratedShows,
 }) {
-  const { data: session } = useSession();
+  const auth = getAuth(app);
+  const [user, setUser] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+        router.push("/");
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  console.log(user);
 
   return (
     <div className="">
@@ -33,7 +54,7 @@ export default function Home({
       </Head>
 
       <Login></Login>
-      {!session ? (
+      {!user ? (
         <Hero></Hero>
       ) : (
         <main className="relative min-h-screen after:bg-home after:bg-center after:bg-cover after:bg-no-repeat after:bg-fixed after:absolute after:inset-0 after:z-[-1]">
